@@ -1,0 +1,13 @@
+sg_name,rule_type,protocol,port_range,dst_cidr,dst_sg
+app_sg,ingress,tcp,80-80,0.0.0.0/0,
+app_sg,ingress,tcp,443-443,0.0.0.0/0,
+app_sg,ingress,udp,230-230,,cache_sg
+app_sg,egress,tcp,2236-2238,,db_sg
+app_sg,egress,tcp,0-65535,0.0.0.0/0,
+db_sg,ingress,tcp,5432-5432,10.0.0.0/16,
+db_sg,egress,tcp,0-65535,0.0.0.0/0,
+cache_sg,ingress,tcp,6379-6379,10.0.1.0/24,
+cache_sg,egress,tcp,0-65535,0.0.0.0/0,
+cache_sg,ingress,udp,379-6379,,db_sg
+cache_sg,ingress,tcp,3306-3306,1.1.1.0/24,
+cache_sg,ingress,udp,230-230,1.1.1.0/24,
